@@ -69,7 +69,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
-alias cd='z'
 
 
 source /etc/environment
@@ -83,5 +82,4 @@ PATH="$HOME/.local/bin:$PATH"
 export FZF_DEFAULT_OPS="--extended"
 # Shell integrations
 eval "$(fzf --zsh)"
-# eval "$(zoxide init --cmd cd zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
