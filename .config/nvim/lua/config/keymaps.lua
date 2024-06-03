@@ -12,7 +12,7 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 keymap.set({ "n", "v" }, "<leader>y", '"+y')
 keymap.set("n", "<leader>Y", '"+Y')
 
-keymap.set("x", "<leader>p", '"_dP')
+keymap.set("x", "p", '"_dP')
 keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 keymap.set({ "n", "v" }, "<leader>D", [["_D]])
 keymap.set({ "n", "v" }, "<leader>c", [["_c]])
@@ -38,7 +38,9 @@ keymap.set("n", "cg*", "*Ncgn")
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 keymap.set("n", "sc", "<C-w>q", opts)
 keymap.set("n", "sr", "<C-w>x")
-
+-- Remap to L and H to beginning of the line and end of the line
+keymap.set("n", "L", "$")
+keymap.set("n", "H", "^")
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
