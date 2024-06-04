@@ -39,8 +39,12 @@ keymap.set("n", "sv", ":vsplit<Return>", opts)
 keymap.set("n", "sc", "<C-w>q", opts)
 keymap.set("n", "sr", "<C-w>x")
 -- Remap to L and H to beginning of the line and end of the line
-keymap.set("n", "L", "$")
-keymap.set("n", "H", "^")
+keymap.set({ "n", "v", "o" }, "L", "$")
+keymap.set({ "n", "v", "o" }, "H", "^")
+
+--Go through buffers
+keymap.set("n", "<Tab>", ":bnext<cr>")
+keymap.set("n", "<S-Tab>", ":bprevious<cr>")
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
