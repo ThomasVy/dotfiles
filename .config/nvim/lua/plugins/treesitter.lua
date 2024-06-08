@@ -1,6 +1,23 @@
 return {
   { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    keys = {
+      {
+
+        ";c",
+        function()
+          local builtin = require("treesitter-context")
+          builtin.go_to_context(vim.v.count1)
+        end,
+        desc = "Jump to the top context",
+        {
+          silent = true,
+        },
+      },
+    },
+  },
   { "tpope/vim-surround", lazy = false },
   {
     "nvim-treesitter/nvim-treesitter",

@@ -74,6 +74,7 @@ alias c='clear'
 source /etc/environment
 PATH="$HOME/.scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.tmuxifier/bin:$PATH"
 #
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -83,3 +84,4 @@ export FZF_DEFAULT_OPS="--extended"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(tmuxifier init -)"

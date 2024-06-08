@@ -162,6 +162,67 @@ return {
     end,
   },
   { "folke/flash.nvim", enabled = false },
-  { "nvim-tree/nvim-web-devicons" },
-  { "mbbill/undotree" },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("oil").setup({
+        default_file_explorer = true,
+        view_options = {
+          -- Show files and directories that start with "."
+          show_hidden = true,
+          -- This function defines what is considered a "hidden" file
+          is_hidden_file = function(name, bufnr)
+            return vim.startswith(name, ".")
+          end,
+          -- This function defines what will never be shown, even when `show_hidden` is set
+          is_always_hidden = function(name, bufnr)
+            return false
+          end,
+          -- Sort file names in a more intuitive order for humans. Is less performant,
+          -- so you may want to set to false if you work with large directories.
+          natural_order = true,
+          sort = {
+            -- sort order can be "asc" or "desc"
+            -- see :help oil-columns to see which columns are sortable
+            { "type", "asc" },
+            { "name", "asc" },
+          },
+        },
+      })
+    end,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    cmd = { "Neotree" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("neo-tree").setup({
+        close_if_last_window = true,
+        filesystem = {
+          follow_current_file = {
+            enabled = true,
+            leave_dirs_open = true,
+          },
+        },
+      })
+    end,
+  },
+  {
+    "mbbill/undotree",
+    keys = {
+      {
+        "<leader>u",
+        "<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>",
+        desc = "Open UndoTree",
+      },
+    },
+  },
 }

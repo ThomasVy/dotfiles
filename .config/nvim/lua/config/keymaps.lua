@@ -6,7 +6,6 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 keymap.set("n", "J", "mzJ`z")
-keymap.set("n", "<C-m>", "<C-i>", opts)
 -- keymap.set("n", "*", ":keepjumps normal~ mi*`i<CR>")
 -- keymap.set("n", "*", "*``")
 keymap.set({ "n", "v" }, "<leader>y", '"+y')
@@ -20,8 +19,11 @@ keymap.set({ "n", "v" }, "<leader>C", [["_C]])
 keymap.set("n", "x", '"_x')
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
+--decrement == <C-x>
 
+keymap.set("n", "-", "<CMD>Oil<CR>", {
+  desc = "Open parent directory",
+})
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
@@ -29,9 +31,6 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "<leader>ps", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Does another search and replace on the word you just replaced --
 keymap.set("n", "g.", '/\\V\\C<C-r>"<CR>cgn<C-a><Esc>')
-
--- Searches for the word under my cursor and performs cgn
-keymap.set("n", "cg*", "*Ncgn")
 
 -- Use <S-l> and <S-h> to switch file buffers
 -- Split window
@@ -50,13 +49,14 @@ keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
--- open undo tree
-keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
--- go to next diagnostic
+-- Diagnostics
+keymap.set("n", ";p", function()
+  vim.diagnostic.goto_prev()
+end, opts)
+
 keymap.set("n", ";n", function()
   vim.diagnostic.goto_next()
 end, opts)
-
 -- make it so that I can undo snippets and autocompletes
 local untrigger = function()
   -- get the snippet
