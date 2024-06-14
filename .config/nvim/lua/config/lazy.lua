@@ -13,6 +13,7 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
       colorscheme = "solarized-osaka",
     } },
+    { import = "lazyvim.plugins.extras.coding.luasnip" },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.linting.eslint" },
     -- { import = "lazyvim.plugins.extras.formatting.prettier" },
@@ -22,23 +23,6 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lang.rust" },
     -- { import = "lazyvim.plugins.extras.lang.tailwind" },
     -- { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-    {
-      "christoomey/vim-tmux-navigator",
-      cmd = {
-        "TmuxNavigateLeft",
-        "TmuxNavigateDown",
-        "TmuxNavigateUp",
-        "TmuxNavigateRight",
-        "TmuxNavigatePrevious",
-      },
-      keys = {
-        { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-        { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-        { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-        { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-        { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-      },
-    },
     -- import/override with your plugins
     { import = "plugins" },
   },

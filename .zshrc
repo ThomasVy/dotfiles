@@ -69,7 +69,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
-
+alias t="tmux"
+alias tl="tmuxifier load-session"
+alias tk="tmux kill-session"
 
 source /etc/environment
 PATH="$HOME/.scripts:$PATH"

@@ -19,9 +19,9 @@ keymap.set({ "n", "v" }, "<leader>C", [["_C]])
 keymap.set("n", "x", '"_x')
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
---decrement == <C-x>
+keymap.set("n", "-", "<C-x>")
 
-keymap.set("n", "-", "<CMD>Oil<CR>", {
+keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", {
   desc = "Open parent directory",
 })
 -- Select all
@@ -34,9 +34,9 @@ keymap.set("n", "g.", '/\\V\\C<C-r>"<CR>cgn<C-a><Esc>')
 
 -- Use <S-l> and <S-h> to switch file buffers
 -- Split window
-keymap.set("n", "sv", ":vsplit<Return>", opts)
-keymap.set("n", "sc", "<C-w>q", opts)
-keymap.set("n", "sr", "<C-w>x")
+keymap.set("n", "<leader>pt", ":vsplit<Return>", { desc = "Split Screen Vertically" })
+keymap.set("n", "<leader>pq", "<C-w>q", { desc = "Close split window" })
+keymap.set("n", "<leader>px", "<C-w>x", { desc = "Rotate split window" })
 -- Remap to L and H to beginning of the line and end of the line
 keymap.set({ "n", "v", "o" }, "L", "$")
 keymap.set({ "n", "v", "o" }, "H", "^")

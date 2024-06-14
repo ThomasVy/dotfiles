@@ -79,28 +79,6 @@ return {
         end,
         desc = "Lists Function names, variables, from Treesitter",
       },
-      {
-        "sf",
-        function()
-          local telescope = require("telescope")
-
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = telescope_buffer_dir(),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-            layout_config = { height = 40 },
-          })
-        end,
-        desc = "Open File Browser with the path of the current buffer",
-      },
     },
     config = function(_, opts)
       local telescope = require("telescope")
@@ -164,12 +142,27 @@ return {
   { "folke/flash.nvim", enabled = false },
   {
     "stevearc/oil.nvim",
-    opts = {},
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("oil").setup({
         default_file_explorer = true,
+        keymaps = {
+          ["g?"] = "actions.show_help",
+          ["<CR>"] = "actions.select",
+          ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+          ["<C-p>"] = "actions.preview",
+          ["<C-c>"] = "actions.close",
+          ["-"] = "actions.parent",
+          ["_"] = "actions.open_cwd",
+          ["`"] = "actions.cd",
+          ["~"] = { "actions.cd", opts = { scope = "tab" } },
+          ["gs"] = "actions.change_sort",
+          ["gx"] = "actions.open_external",
+          ["g."] = "actions.toggle_hidden",
+          ["g\\"] = "actions.toggle_trash",
+        },
+        use_default_keymaps = false,
         view_options = {
           -- Show files and directories that start with "."
           show_hidden = true,
@@ -193,9 +186,27 @@ return {
         },
       })
     end,
+    -- opt = {},
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
     branch = "v3.x",
     cmd = { "Neotree" },
     dependencies = {
@@ -205,6 +216,7 @@ return {
     },
     config = function()
       require("neo-tree").setup({
+        default_file_explorer = false,
         close_if_last_window = true,
         filesystem = {
           follow_current_file = {
@@ -224,5 +236,21 @@ return {
         desc = "Open UndoTree",
       },
     },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>")
+      vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>")
+    end,
+  },
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      vim.keymap.set({ "n", "x", "o" }, "z", "<Plug>(leap-forward)")
+      vim.keymap.set({ "n", "x", "o" }, "Z", "<Plug>(leap-backward)")
+      vim.keymap.set({ "n", "x", "o" }, "gz", "<Plug>(leap-from-window)")
+    end,
   },
 }
