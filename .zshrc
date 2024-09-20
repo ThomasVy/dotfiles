@@ -80,6 +80,7 @@ source /etc/environment
 PATH="$HOME/.scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.tmuxifier/bin:$PATH"
+. "$HOME/.cargo/env"
 #
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
