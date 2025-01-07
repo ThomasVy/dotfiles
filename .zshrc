@@ -70,7 +70,7 @@ alias ls="eza"
 alias ll="eza -alh"
 alias tree="eza --tree"
 alias vim='nvim'
-alias c='clear'
+alias cl='clear'
 alias t="tmux"
 alias tl="tmuxifier load-session"
 alias tk="tmux kill-session"
@@ -80,6 +80,7 @@ source /etc/environment
 PATH="$HOME/.scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.tmuxifier/bin:$PATH"
+PATH="$PATH:/opt/nvim-linux64/bin"
 
 if [ -f ~/.zprofile ]; then 
     . ~/.zprofile;
