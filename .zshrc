@@ -80,7 +80,7 @@ source /etc/environment
 PATH="$HOME/.scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.tmuxifier/bin:$PATH"
-PATH="$PATH:/opt/nvim-linux64/bin"
+PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
 if [ -f ~/.zprofile ]; then 
     . ~/.zprofile;
