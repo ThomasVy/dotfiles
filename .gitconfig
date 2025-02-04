@@ -1,5 +1,7 @@
 [user]
-	email = vythomas97@gmail.com
 	name = Thomas Vy
+	email = vythomas97@gmail.com
 [core]
 	editor = nvim
+[pull]
+	rebase = true
