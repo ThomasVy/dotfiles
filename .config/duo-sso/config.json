@@ -1,8 +1,0 @@
-{
-  "url": "https://cloudsso.cisco.com",
-  "partner_spid": "https://signin.aws.amazon.com/saml",
-  "aws_urn": "https://signin.aws.amazon.com/saml",
-  "session_duration_seconds": 28800,
-  "auth_method": "",
-  "debug": false
-}
