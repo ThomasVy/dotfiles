@@ -174,11 +174,15 @@ alias tl="tmuxifier load-session"
 alias tk="tmux kill-session"
 alias cat="bat"
 
+export VCPKG_ROOT="$HOME/vcpkg"
+
 source /etc/environment
 PATH="$HOME/.scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.tmuxifier/bin:$PATH"
 PATH="/opt/nvim-linux-x86_64/bin:$PATH"
+PATH="$VCPKG_ROOT:$PATH"
+
 
 if [ -f ~/.zprofile ]; then 
     . ~/.zprofile;
