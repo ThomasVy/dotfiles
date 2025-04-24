@@ -2,6 +2,7 @@
 
 sudo apt update
 sudo apt install stow
+cd ..
 stow .
 
 sudo apt install zsh
