@@ -1,9 +1,8 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install stow
+sudo apt install gpg stow zsh curl wget -y 
 cd ..
 stow .
 
-sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
