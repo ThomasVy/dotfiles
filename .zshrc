@@ -165,7 +165,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls="eza"
-alias ll="eza -alh"
+alias ll="eza -alh --icons"
 alias tree="eza --tree"
 alias vim='nvim'
 alias cl='clear'
