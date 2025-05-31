@@ -167,7 +167,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls="eza"
 alias ll="eza -alh --icons"
 alias tree="eza --tree"
-alias vim='nvim'
+alias v='nvim'
 alias cl='clear'
 alias t="tmux"
 alias tl="tmuxifier load-session"
