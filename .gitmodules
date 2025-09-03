@@ -6,7 +6,7 @@
 	url = https://git::@github.com/christoomey/vim-tmux-navigator
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = https://git::@github.com/ThomasVy/kickstart-modular.nvim
+	url = ../kickstart-modular.nvim
 [submodule ".tmuxifier"]
 	path = .tmuxifier
 	url = https://git::@github.com/ThomasVy/tmuxifier
