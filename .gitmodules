@@ -9,7 +9,7 @@
 	url = ../kickstart-modular.nvim
 [submodule ".tmuxifier"]
 	path = .tmuxifier
-	url = https://git::@github.com/ThomasVy/tmuxifier
+	url = ../tmuxifier
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://git::@github.com/tmux-plugins/tpm
