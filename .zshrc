@@ -139,7 +139,7 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
-bindkey '^ ' autosuggest-accept
+bindkey '^[l' autosuggest-accept
 bindkey '^f' forward-word
 bindkey '^b' backward-word
 
