@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install gpg stow zsh curl wget -y 
+sudo apt install gpg xclip stow zsh curl wget -y 
 cd ..
 stow .
 
