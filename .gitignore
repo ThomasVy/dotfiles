@@ -1,3 +1,4 @@
 .config/duo-sso
 .config/github-copilot
 .config/go
+.config/btop
