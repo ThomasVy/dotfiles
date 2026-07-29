@@ -1,0 +1,28 @@
+alias ls="eza"
+alias ll="eza -alh --icons"
+alias tree="eza --tree"
+alias v='nvim'
+alias cl='clear'
+alias t="tmux"
+alias tl="tmuxifier load-session"
+alias tk="tmux kill-session"
+alias cat="bat"
+
+platform_open() {
+    local target="${1:-.}"
+
+    if [[ -n "${WSL_DISTRO_NAME:-}" || -n "${WSL_INTEROP:-}" ]]; then
+        local resolved
+        resolved="$(realpath -- "$target")" || return
+        /mnt/c/Windows/explorer.exe "$(wslpath -w "$resolved")"
+    elif (( $+commands[xdg-open] )); then
+        command xdg-open "$target"
+    elif (( $+commands[gio] )); then
+        command gio open "$target"
+    else
+        print -u2 "open: install xdg-utils or gio"
+        return 127
+    fi
+}
+
+alias open=platform_open

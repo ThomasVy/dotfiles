@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt install gpg xclip stow zsh curl wget -y 
-cd ..
+cd ../..
 stow .
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

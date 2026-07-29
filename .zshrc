@@ -164,15 +164,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls="eza"
-alias ll="eza -alh --icons"
-alias tree="eza --tree"
-alias v='nvim'
-alias cl='clear'
-alias t="tmux"
-alias tl="tmuxifier load-session"
-alias tk="tmux kill-session"
-alias cat="bat"
+source "$HOME/.zshrc_aliases"
 
 export VCPKG_ROOT="$HOME/vcpkg"
 
@@ -203,5 +195,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# opencode
-export PATH=/home/thomas/.opencode/bin:$PATH
+[ -f "/home/tvy/.config/oh-my-pi/env.sh" ] && source "/home/tvy/.config/oh-my-pi/env.sh"
+
+# bun completions
+[ -s "/home/tvy/.bun/_bun" ] && source "/home/tvy/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export NODE_USE_SYSTEM_CA=1
+
+# Start or reattach to the main tmux session in interactive terminals.
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [ -t 0 ]; then
+    exec tmux new-session -A -s main
+fi
