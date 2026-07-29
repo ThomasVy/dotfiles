@@ -206,6 +206,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export NODE_USE_SYSTEM_CA=1
 
 # Start or reattach to the main tmux session in interactive terminals.
-if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [ -t 0 ]; then
-    exec tmux new-session -A -s main
-fi
+# if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [ -t 0 ]; then
+#     exec tmux new-session -A -s main
+# fi

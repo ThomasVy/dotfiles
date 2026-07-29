@@ -11,5 +11,4 @@ brew install go
 brew install bottom
 brew install bat
 brew install fd
-
-
+brew install herdr
