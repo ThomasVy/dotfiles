@@ -199,6 +199,9 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "/home/tvy/.config/oh-my-pi/env.sh" ] && source "/home/tvy/.config/oh-my-pi/env.sh"
 
+# Load the Microsoft Teams webhook used by OMP notifications.
+[ -f "$HOME/.config/omp/teams.env" ] && source "$HOME/.config/omp/teams.env"
+
 # bun completions
 [ -s "/home/tvy/.bun/_bun" ] && source "/home/tvy/.bun/_bun"
 
@@ -207,7 +210,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export NODE_USE_SYSTEM_CA=1
 
-# Start or reattach to the main tmux session in interactive terminals.
-# if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [ -t 0 ]; then
-#     exec tmux new-session -A -s main
-# fi
+# Start or reattach to Herdr in interactive terminals.
+if command -v herdr >/dev/null 2>&1 && [ -z "$HERDR_PANE_ID" ] && [ -z "$TMUX" ] && [ -t 0 ]; then
+    exec herdr
+fi
