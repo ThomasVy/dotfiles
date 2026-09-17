@@ -2,3 +2,6 @@
 .config/github-copilot
 .config/go
 .config/btop
+
+*.log
+.config/herdr/*.json

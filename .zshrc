@@ -191,7 +191,21 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(tmuxifier init -)"
 
-eval $(keychain --eval --agents ssh ~/.ssh/id_ed25519)
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+fi
+
+# Add every private key that has a matching public key.
+if [[ -n "$SSH_AUTH_SOCK" ]]; then
+    loaded_ssh_keys="$(ssh-add -L 2>/dev/null)"
+    for public_key in "$HOME"/.ssh/*.pub(N); do
+        private_key="${public_key%.pub}"
+        [[ -f "$private_key" ]] || continue
+        read -r key_type key_data _ < "$public_key"
+        [[ "$loaded_ssh_keys" == *"$key_type $key_data"* ]] || ssh-add -q "$private_key"
+    done
+    unset loaded_ssh_keys public_key private_key key_type key_data
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -212,5 +226,5 @@ export NODE_USE_SYSTEM_CA=1
 
 # Start or reattach to Herdr in interactive terminals.
 if command -v herdr >/dev/null 2>&1 && [ -z "$HERDR_PANE_ID" ] && [ -z "$TMUX" ] && [ -t 0 ]; then
-    exec herdr
+    herdr
 fi

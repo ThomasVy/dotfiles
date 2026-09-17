@@ -27,13 +27,10 @@ split_vertical = "prefix+%"
 split_horizontal = 'prefix+"'
 # tmux: bind c new-window
 new_tab = "prefix+c"
+# Focus the next agent shown in the agent panel
+next_agent = "prefix+j"   # or another key combo like "cmd+alt+down"
+previous_agent = "prefix+k"
 
-# Notes on non-binding tmux settings (already herdr defaults, no config needed):
-#   set -g mouse on                -> [ui] mouse_capture = true (default)
-#   set-window-option mode-keys vi -> navigate mode uses h/j/k/l by default
-
-# bind p split-window -hf
-# bind w neww
-# bind K kill-session
-# bind W killw
-# bind P killp
+[ui]
+agent_panel_sort = "spaces"
+sidebar_collapsed_mode = "compact"
