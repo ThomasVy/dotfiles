@@ -171,7 +171,6 @@ export VCPKG_ROOT="$HOME/vcpkg"
 source /etc/environment
 PATH="$HOME/.scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.tmuxifier/bin:$PATH"
 PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 PATH="$VCPKG_ROOT:$PATH"
 
@@ -189,7 +188,6 @@ export FZF_DEFAULT_OPS="--extended"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(tmuxifier init -)"
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)" > /dev/null
