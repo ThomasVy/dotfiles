@@ -189,9 +189,7 @@ export FZF_DEFAULT_OPS="--extended"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)" > /dev/null
-fi
+eval "$(ssh-agent -s)" > /dev/null
 
 # Add every private key that has a matching public key.
 if [[ -n "$SSH_AUTH_SOCK" ]]; then
